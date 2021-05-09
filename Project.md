@@ -1022,7 +1022,7 @@ NewData_num <- NewData%>%select_if(is.numeric)
 cor(NewData_num, use = "pairwise.complete.obs")%>%as.data.frame%>%rownames_to_column%>%pivot_longer(-1, names_to = "other_var", values_to = "correlation")%>%ggplot(aes(rowname, other_var, fill = correlation))+geom_tile()+scale_fill_gradient2(low = "red", mid = "white", high = "blue")+ geom_text(aes(label = round(correlation,2)), color = "black", size = 4)+labs(title = "Correlation matrix for the dataset New_Data_num", x = "variable 1", y = "variable 2")
 ```
 
-<img src="Project_files/figure-gfm/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+![image](https://user-images.githubusercontent.com/83238925/117587240-84150680-b0e2-11eb-9f5d-ad810b4db85a.png)
 
 ``` r
 #creation of first ggplot
@@ -1034,7 +1034,7 @@ cor(NewData_num, use = "pairwise.complete.obs")%>%as.data.frame%>%rownames_to_co
 NewData%>%ggplot()+geom_point(aes(x = `% Physically Inactive`, y = `Life Expectancy`, color = listing_exercise_opportunity))+labs(title = "Physical Inactivity vs. Life Expectancy", x = "Physical Inactivity(%)", y = "Life Expectancy(years))") + xlim(15,45)+ylim(70,90)+theme_classic()+theme(axis.line = element_line(color = "#991002"))+theme(axis.text = element_text(color = "#991002"))
 ```
 
-<img src="Project_files/figure-gfm/unnamed-chunk-8-2.png" style="display: block; margin: auto;" />
+![image](https://user-images.githubusercontent.com/83238925/117587244-8aa37e00-b0e2-11eb-98c4-9b45328d0f3c.png)
 
 ``` r
 #creation of second ggplot
@@ -1047,7 +1047,7 @@ NewData%>%ggplot()+geom_point(aes(x = `% Physically Inactive`, y = `Life Expecta
 NewData%>%ggplot(aes(x = `% Physically Inactive`, y = `% Adults with Diabetes`, fill = `listing_exercise_opportunity`))+geom_bar(stat = "summary", width = .5)+stat_summary(fun = mean,color="black",size=.5)+ facet_wrap("listing_exercise_opportunity")+scale_fill_manual("listing_exercise_opportunity", values = c(`high` = "light green", `med` = "sky blue", `low` = "pink"))+theme(axis.line = element_line(color = "#021099"))+theme(axis.text = element_text(color = "#021099"))+labs(title = "% Adults with Diabetes vs. % Physically Inactive faceted by exercise opportunity")
 ```
 
-<img src="Project_files/figure-gfm/unnamed-chunk-8-3.png" style="display: block; margin: auto;" />
+![image](https://user-images.githubusercontent.com/83238925/117587255-90995f00-b0e2-11eb-97b7-2768d122abf6.png)
 
 ###### Discussion: Looking at the heat map visualization, the variables “%adults with diabetes” and “% with Access to exercise opportunities” seems to have the lowest correlation between the two. On the other hand, it seems that “% Physically Inactive” and “%Adults with Diabetes” had the strong correlation. However, regardless of how strong the strongest correlation was, there was no particular dataset that had a particularly strong correlation between two datasets.
 
@@ -1123,7 +1123,7 @@ head(pca_data)
 ggplot(pca_data, aes(x = PC1, y = PC2, color = listing_exercise_opportunity)) + geom_point()+labs(title = "PC2 vs. PC1 grouped by listing_exercise_opportunity")
 ```
 
-<img src="Project_files/figure-gfm/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+![image](https://user-images.githubusercontent.com/83238925/117587267-9b53f400-b0e2-11eb-931c-d6d81afc364c.png)
 
 ``` r
 #rotation data from pca is viewed
@@ -1154,7 +1154,7 @@ arrow_style <- arrow(length = unit(0.05, "inches"), type = "closed")
 ggplot(rotation_data) + geom_segment(aes(xend = PC1, yend = PC2), x = 0, y = 0, arrow = arrow_style) + geom_text(aes(x = PC1, y = PC2, label = variable), hjust = 0, size = 3, color = "blue") + xlim(-1., 1.) + ylim(-1., 1.) + coord_fixed()+labs(title = "Contribution of variables to PC using Arrows")
 ```
 
-<img src="Project_files/figure-gfm/unnamed-chunk-9-2.png" style="display: block; margin: auto;" />
+![image](https://user-images.githubusercontent.com/83238925/117587272-a018a800-b0e2-11eb-9867-6755259c79c1.png)
 
 ``` r
 # Determine the percentage of variance explained by each component with sdev
